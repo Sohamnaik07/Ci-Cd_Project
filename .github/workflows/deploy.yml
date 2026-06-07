@@ -1,6 +1,7 @@
 name:  Depoly from ec2
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows:
       - "Build image and push "
