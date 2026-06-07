@@ -3,7 +3,7 @@ name:  Depoly from ec2
 on:
   workflow_run:
     workflows:
-      - "Build and Push Docker Image"
+      - "Build image and push "
     types:
       - completed
 jobs:
