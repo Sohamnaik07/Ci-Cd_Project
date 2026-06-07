@@ -22,7 +22,7 @@ jobs:
           password:  ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name:  build the image 
-        run:  docker build -d stranger00/project:latest .
+        run:  docker build -t stranger00/project:latest .
 
       - name:  push to docker hub
         run:  docker push stranger00/project:latest
