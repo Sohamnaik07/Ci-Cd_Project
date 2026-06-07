@@ -10,7 +10,9 @@ on:
 jobs:
   depoly:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: |
+       github.event_name == 'workflow_dispatch' ||
+       github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name:  Deploy to EC2 via SSH
@@ -19,7 +21,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          script:  
+          script: | 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/project:latest
             docker stop app || true
             docker rm app || true
