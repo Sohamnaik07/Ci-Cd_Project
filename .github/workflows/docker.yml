@@ -1,1 +1,16 @@
+name:  Build image and push 
 
+on:  
+  push:
+    branches:   
+      -  main
+
+jobs:
+  bulid:  
+    runs-on: ubuntu-latest
+
+    steps:
+      - name:  checkout the code
+        uses:  actions/checkout@v4
+
+      
